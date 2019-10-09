@@ -15,6 +15,35 @@ export default {
         this.audio.onended = () => this.next();
     },
 
+    play() {
+        this.isPlaying = true;
+        this.audio.play();
+        this.playPause.innerText = "pause";
+    },
+
+    pause() {
+        this.isPlaying = false;
+        this.audio.pause();
+        this.playPause.innerText = "play_arrow";
+    },
+
+    togglePlayPause() {
+        if (this.isPlaying) {
+            this.pause();
+        } else {
+            this.play();
+        }
+    },
+
+    setVolume(value) {
+        this.audio.volumeControl = value / 100;
+    },
+
+    toggleMute() {
+        this.audio.muted = !this.audio.muted;
+        this.mute.innerText = this.audio.muted ? "volume_mute" : "volume_up";
+    },
+
     next() {
         this.currentPlaying++;
         if (this.currentPlaying == this.audioData.length) this.restart();
