@@ -10,25 +10,36 @@
 </head>
 
 <body>
-
+    <!--Container do Player de Audio-->
     <div id="player">
-
+        <!--Título do Player-->
         <h4><i class="material-icons">equalizer</i> MPSong</h4>
+        <!--Fim Título do Player-->
+        <!--Card-->
         <div class="card">
+            <!--Card Image-->
             <div class="card-image">
                 <a href="#" class="btn-floating btn-large halfway-fab">
+                    <!--Botão Flutuante no canto inferior direito da imagem-->
                     <i id="play-pause" class="material-icons">play_arrow</i>
                 </a>
             </div>
+            <!--Fim Card Image-->
             <div class="card-content">
                 <h5>Title</h5>
+                <!--Titulo-->
                 <p class="artist">Artist</p>
+                <!--Artista-->
+                <!--Controles do Player de Audio-->
                 <div class="row valign-wrapper">
+                    <!--Duração Atual-->
                     <div class="col s2" id="current-duration">00:00</div>
                     <div class="col s6 range-field valign-wrapper">
                         <input id="seekbar" type="range" min="0" max="0" step="1">
                     </div>
+                    <!--Duração Total-->
                     <div class="col s2" id="total-duration">00:00</div>
+                    <!--Controles de Som-->
                     <div>
                         <a href="#">
                             <i id="mute" class="material-icons">volume_up</i>
@@ -37,10 +48,14 @@
                     <div class="col s3 range-field valign-wrapper">
                         <input id="vol-control" type="range" min="0" max="100" step="1">
                     </div>
+                    <!--Fim Controles de Som-->
                 </div>
+                <!--Fim Controles do Player de Audio-->
             </div>
         </div>
+        <!--Fim Card-->
     </div>
+    <!--Fim Container do Player de Audio-->
     <script src="index.js" type="module"></script>
 </body>
 

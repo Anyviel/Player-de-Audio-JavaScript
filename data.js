@@ -10,11 +10,5 @@ export default [
         artist: "NX Zero",
         cover: "bem-ou-mal-cover.jpg",
         file: "Bem-Ou-Mal.mp3"
-    },
-    {
-        title: "Fairy Tail - All Openings (01 - 16)",
-        artist: "Vários",
-        cover: "fairy-tail-cover.jpg",
-        file: "Fairy-Tail-All-Openings.mp3"
     }
 ];

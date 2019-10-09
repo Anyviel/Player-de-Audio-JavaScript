@@ -1,5 +1,5 @@
 import audios from "./data.js";
-import { path } from "./utils.js";
+import { path, secondsToMinutes } from "./utils.js";
 import elements from "./playerElements.js";
 
 export default {
@@ -10,9 +10,7 @@ export default {
 
     start() {
         elements.get.call(this);
-        elements.actions.call(this);
         this.update();
-        this.audio.onended = () => this.next();
     },
 
     play() {
@@ -39,6 +37,10 @@ export default {
         this.audio.volumeControl = value / 100;
     },
 
+    setSeek(value) {
+        this.audio.currentTime = value;
+    },
+
     toggleMute() {
         this.audio.muted = !this.audio.muted;
         this.mute.innerText = this.audio.muted ? "volume_mute" : "volume_up";
@@ -48,6 +50,12 @@ export default {
         this.currentPlaying++;
         if (this.currentPlaying == this.audioData.length) this.restart();
         this.update();
+        this.play();
+    },
+
+    timeUpdate() {
+        this.currentDuration.innerText = secondsToMinutes(this.audio.currentTime);
+        this.seekBar.value = this.audio.currentTime;
     },
 
     update() {
@@ -55,7 +63,10 @@ export default {
         this.cover.style.background = `url('${path(this.currentAudio.cover)}') no-repeat center center / cover`;
         this.title.innerText = this.currentAudio.title;
         this.artist.innerText = this.currentAudio.artist;
-        elements.createAudioElement.call(this, path(this.currentAudio.file))
+        elements.createAudioElement.call(this, path(this.currentAudio.file));
+        this.audio.onloadeddata = () => {
+            elements.actions.call(this);
+        }
     },
 
     restart() {
